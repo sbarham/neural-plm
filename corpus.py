@@ -19,7 +19,7 @@ import torch
 ## Important Globals ##
 #######################
 
-N = 1000
+N = -1 # 1000
 
 nlp = spacy.load('en_core_web_sm')
 

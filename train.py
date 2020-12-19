@@ -17,15 +17,25 @@ print_every = 100
 num_iterations = int(1e5)
 
 # Hyperparameters
-sample_length = 100
-batch_size = 16
+sample_length = 5 # 100
+batch_size = 64
+
+# Model Parameters
+emb_dim = 60
+hidden_dim = 50
 
 # Get the dataset
 dataset = corpus.brown_dataset
 
 # Create the model
 print("Initializing model ...")
-lm = model.ProbabilisticNeuralLM(dataset.vocab_size, sample_length=sample_length)
+lm = model.ProbabilisticNeuralLM(
+    dataset.vocab_size,
+    emb_dim=emb_dim,
+    hidden_dim=hidden_dim,
+    sample_length=sample_length
+)
+
 optimizer = optim.Adam(lm.parameters(), amsgrad=True)
 
 losses = []
@@ -58,4 +68,4 @@ for i in range(num_iterations):
         # Compute perplexity
         perp = math.exp(avg_loss)
 
-        print("({}) : {}".format(i, perp))
+        print("({}) : {}".format((i + 1), perp))

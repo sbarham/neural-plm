@@ -43,8 +43,8 @@ class ProbabilisticNeuralLM(nn.Module):
             self,
             vocab_size,
             emb_dim=emb_dim,
-            sample_length=sample_length,
-            hidden_dim=hidden_dim
+            hidden_dim=hidden_dim,
+            sample_length=sample_length
     ):
         super(ProbabilisticNeuralLM, self).__init__()
         
